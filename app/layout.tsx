@@ -8,9 +8,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <head>
-        <title>Meta Messenger</title>
-      </head>
+      <head></head>
       <body>
         <Header />
         {children}

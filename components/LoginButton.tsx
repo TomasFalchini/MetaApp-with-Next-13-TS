@@ -4,7 +4,7 @@ import React from "react";
 import { auth } from "../firebase/firebase";
 import { signInWithPopup, FacebookAuthProvider, signOut } from "firebase/auth";
 
-const fb = "https://meta-2cdf6.firebaseapp.com/__/auth/handler"
+const fb = "https://meta-2cdf6.firebaseapp.com/__/auth/handler";
 
 /* 
 
@@ -31,17 +31,6 @@ signInWithPopup(auth, provider)
     // ...
     
   });
-  
-  
-  
-  
-  const auth = getAuth();
-signOut(auth).then(() => {
-  // Sign-out successful.
-}).catch((error) => {
-  // An error happened.
-});
-
 
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -62,13 +51,13 @@ onAuthStateChanged(auth, (user) => {
   */
 
 export default function LoginButton() {
-
   const provider = new FacebookAuthProvider();
 
-  const LogIn: () => void {
-    
-  }
+  const LogIn: () => void = () => {};
 
-
-  return <div>LoginButton</div>;
+  return (
+    <button className="bg-blue-400 hover:bg-blue-700 text-white font-bold rounded px-4 py-2">
+      SIGN IN
+    </button>
+  );
 }
