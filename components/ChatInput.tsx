@@ -1,6 +1,10 @@
 "use client";
 
 import React from "react";
+import { Message, User } from "../types/types";
+import redis from "../database/redis";
+import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 interface InputState {
   input: string;
@@ -15,8 +19,33 @@ export default function ChatInput() {
     setInput(evt.target.value);
   };
 
+  const addMessage: (evt: React.FormEvent<HTMLFormElement>) => void = (evt) => {
+    evt.preventDefault();
+    if (!input) return;
+    const messageToSend = input;
+    setInput("");
+    const id = uuidv4();
+    const message: Message = {
+      uid: id,
+      content: messageToSend,
+      user: {} as User, //arreglar esto dsps
+      timestamp: new Date(),
+    };
+    const uploadMessagetToUpstash = async (): Promise<void> => {
+      const data = await axios("api/addMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    };
+  };
+
   return (
-    <form className="fixed bottom-5 flex px-10 py-5 space-x-5 border-t border-gray-200 z-50 w-full">
+    <form
+      onSubmit={addMessage}
+      className="fixed bottom-5 flex px-10 py-5 space-x-5 border-t border-gray-200 z-50 w-full"
+    >
       <input
         value={input}
         onChange={changeInput}

@@ -9,4 +9,5 @@ export interface Message {
   content: string;
   user: User;
   timestamp: Date;
+  uid: string;
 }
