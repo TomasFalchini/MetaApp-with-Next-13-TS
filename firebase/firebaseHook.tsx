@@ -1,10 +1,11 @@
 import React from "react";
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { User } from "../types/types";
+import { UserType } from "../types/types";
+import formatAuthUser from "../utils/formatAuthUser";
 
 interface AuthState {
-  currentUser: User | null;
+  currentUser: UserType | null;
   loading: boolean;
 }
 
@@ -16,12 +17,7 @@ export default function useFirebaseAuthHook(): AuthState {
   React.useEffect(() => {
     const unsuscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setCurrentUser({
-          name: user.displayName || "No name",
-          image: user.photoURL || "No image",
-          uid: user.uid,
-          lastSignIn: new Date(user.metadata.lastSignInTime || Date.now()),
-        });
+        setCurrentUser(formatAuthUser(user));
         setLoading(true);
       } else {
         setCurrentUser(null);

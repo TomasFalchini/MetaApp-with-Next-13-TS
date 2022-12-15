@@ -1,17 +1,23 @@
 "use client";
 
 import React from "react";
-import { Message, User } from "../types/types";
-import redis from "../database/redis";
+import { Message, UserType } from "../types/types";
+
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
+import useGetMessages from "../hooks/useGetMessages";
+
+interface Props {
+  reciveruid: string;
+}
 
 interface InputState {
   input: string;
 }
 
-export default function ChatInput() {
+export default function ChatInput({ reciveruid }: Props) {
   const [input, setInput] = React.useState<InputState["input"]>("");
+  const { messages, mutate } = useGetMessages("userid", reciveruid);
 
   const changeInput: (evt: React.ChangeEvent<HTMLInputElement>) => void = (
     evt
@@ -28,17 +34,31 @@ export default function ChatInput() {
     const message: Message = {
       uid: id,
       content: messageToSend,
-      user: {} as User, //arreglar esto dsps
+      userRecive: reciveruid, //usuario al que le estoy mandando el msj
+      user: {} as UserType, //arreglar esto dsps
       timestamp: new Date(),
     };
-    const uploadMessagetToUpstash = async (): Promise<void> => {
+    const uploadMessagetToMongo = async (): Promise<Array<Message>> => {
       const data = await axios("api/addMessage", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        data: JSON.stringify({ message: message }),
       });
+
+      if (data) {
+        return [message, ...messages];
+      }
+      return messages;
+
+      //data es {upload: true or false}
     };
+
+    mutate(uploadMessagetToMongo, {
+      optimisticData: [message, ...messages],
+      rollbackOnError: true,
+    });
   };
 
   return (

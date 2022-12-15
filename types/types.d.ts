@@ -1,4 +1,4 @@
-export interface User {
+export interface UserType {
   name: string;
   image: string;
   uid: string;
@@ -7,7 +7,8 @@ export interface User {
 
 export interface Message {
   content: string;
-  user: User;
+  user: UserType;
+  userRecive: string; //es un uid del q recive
   timestamp: Date;
   uid: string;
 }
