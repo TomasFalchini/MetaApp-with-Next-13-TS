@@ -1,27 +1,20 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { UserType } from "../../types/types";
+import { ContactDB } from "../../database/schemas";
+import { Contact } from "../../types/types";
 
-/* type Data = {
-  upload: boolean;
+type Data = {
+  contacts: Contact[] | null;
 };
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  if (req.method !== "POST") return res.status(404).json({ upload: false });
+  if (req.method !== "GET") return res.status(404).json({ contacts: null });
 
-  const { message } = req.body;
-  const newMessage: Message = {
-    ...message,
-    timestamp: Date.now(),
-  };
+  const { userId } = req.body;
 
-  const p = new MessageDB(newMessage);
-  await p.save();
+  const contacts: Contact[] = await ContactDB.find({}).exec();
 
-  pusherServer.trigger("messages-chanel", "new-message-added", newMessage);
-
-  res.status(200).json({ upload: true });
+  res.status(200).json({ contacts });
 }
- */

@@ -12,3 +12,9 @@ export interface Message {
   timestamp: Date;
   uid: string;
 }
+
+export interface Contact {
+  user: UserType;
+  contactId: string;
+  accepted: boolean;
+}
