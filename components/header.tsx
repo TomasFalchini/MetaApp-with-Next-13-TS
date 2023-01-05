@@ -17,7 +17,7 @@ export default function Header() {
             width={15}
             height={15}
             alt="Profile picture"
-            src="session.profilePicture"
+            src="https://scontent.fros9-2.fna.fbcdn.net/v/t1.6435-9/50914605_2013309055371535_7906911174187286528_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeEGojOd96QWrazc1eTFQm9X_rKB94rPMun-soH3is8y6aEPHreTdLt-jbYWjLBF72GLOf9nG_uv_I_HLonWdjeA&_nc_ohc=aynLzBzH8OgAX_HYBTQ&_nc_ht=scontent.fros9-2.fna&oh=00_AfC0sUk9fLNftEHBMObqwQ2danMaskLJXCWjghs6_eejAQ&oe=63C46C4C"
           />
           <p className="text-blue-300">Logged in as:</p>
           <p className="font-bold text-lg">

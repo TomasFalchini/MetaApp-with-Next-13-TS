@@ -19,7 +19,7 @@ export default async function handler(
   if (messagesRes.length === 0) return res.status(301).send(false);
   const allMessages = messagesRes.filter((el) => {
     const mess = el.toObject();
-    if (mess.userRecive.uid === userReciveruid)
+    if (mess.userRecive === userReciveruid)
       return {
         content: mess.content,
         timestamp: mess.timestamp,
