@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Message, UserType } from "../types/types";
+import { Message, UserType } from "../../../types/types";
 
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";

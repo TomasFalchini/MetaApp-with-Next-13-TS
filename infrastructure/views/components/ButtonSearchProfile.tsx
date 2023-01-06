@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { UserType } from "../types/types";
+import { UserType } from "../../../types/types";
 
 interface Props {
   email: string;

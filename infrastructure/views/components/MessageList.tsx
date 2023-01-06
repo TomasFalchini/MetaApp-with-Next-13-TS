@@ -2,8 +2,8 @@
 
 import React, { useEffect } from "react";
 import useGetMessages from "../hooks/useGetMessages";
-import { pusherClient } from "../pusher/pusher";
-import { Message } from "../types/types";
+import { pusherClient } from "../../../pusher/pusher";
+import { Message } from "../../../types/types";
 import MessageComponent from "./MessageComponent";
 
 interface Props {

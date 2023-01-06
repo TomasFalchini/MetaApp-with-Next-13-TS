@@ -1,5 +1,5 @@
 import React from "react";
-import { Message } from "../types/types";
+import { Message } from "../../../types/types";
 import Image from "next/image";
 
 type Props = Omit<Message, "userRecive" | "uid">;

@@ -1,4 +1,4 @@
-import ButtonToProfile from "../../../components/ButtonToProfile";
+import ButtonToProfile from "../../../infrastructure/views/components/ButtonToProfile";
 import "../styles/globals.css";
 
 export default function RootLayout({

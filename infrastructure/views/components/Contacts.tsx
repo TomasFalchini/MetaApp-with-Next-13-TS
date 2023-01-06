@@ -1,14 +1,12 @@
 import axios from "axios";
 import React from "react";
-import { UserType } from "../types/types";
+import { UserType } from "../../../types/types";
 
 import UserCard from "./UserCard";
 
 const getContacts = async () => {
-  
   const data = await axios.get(`http://localhost:3000/api/contacts/user123`);
-    return data.data.contacts;
-  
+  return data.data.contacts;
 };
 
 async function Contacts() {

@@ -1,5 +1,5 @@
 import React from "react";
-import { UserType } from "../types/types";
+import { UserType } from "../../../types/types";
 import ButtonToChat from "./ButtonToChat";
 import Image from "next/image";
 

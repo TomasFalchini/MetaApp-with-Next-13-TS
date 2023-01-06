@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-import { auth } from "../firebase/firebase";
+import { auth } from "../../../firebase/firebase";
 import { signInWithPopup, FacebookAuthProvider, signOut } from "firebase/auth";
 
 const fb = "https://meta-2cdf6.firebaseapp.com/__/auth/handler";

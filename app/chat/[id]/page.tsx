@@ -1,6 +1,6 @@
 import React from "react";
-import ChatInput from "../../../components/ChatInput";
-import MessageList from "../../../components/MessageList";
+import ChatInput from "../../../infrastructure/views/components/ChatInput";
+import MessageList from "../../../infrastructure/views/components/MessageList";
 
 export default function ChatWithOneUser({
   params,

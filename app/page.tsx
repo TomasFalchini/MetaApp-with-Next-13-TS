@@ -1,5 +1,5 @@
 import React from "react";
-import Contacts from "../components/Contacts";
+import Contacts from "../infrastructure/views/components/Contacts";
 
 export default function HomePage() {
   return (
